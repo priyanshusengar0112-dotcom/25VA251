@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Lab</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #e6e6e6;
+        }
+
+        .box {
+            width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: white;
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 6px;
+            margin: 10px 0;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <!-- ✅ HEADING FIRST -->
+    <h2 id="heading">Welcome to JavaScript Lab</h2>
+
+    <!-- ✅ INPUT BELOW HEADING -->
+    <input type="text" id="newHeading" placeholder="Enter new heading text">
+
+    <p id="para">
+        This is a sample paragraph for JavaScript experiment.
+    </p>
+
+    <br>
+
+    <button onclick="changeHeading()">Change Heading</button>
+    <button onclick="changeBackground()">Change Background</button>
+    <button onclick="increaseFont()">Increase Font Size</button>
+    <button onclick="togglePara()">Show / Hide Paragraph</button>
+    <button onclick="resetPage()">Reset</button>
+
+</div>
+
+<script>
+let isVisible = true;
+let fontSize = 16;
+
+// Change Heading using input
+function changeHeading() {
+    let inputText = document.getElementById("newHeading").value;
+
+    if (inputText.trim() !== "") {
+        document.getElementById("heading").innerHTML = inputText;
+    } else {
+        document.getElementById("heading").innerHTML = "Please enter heading!";
+    }
+}
+
+// Change Background
+function changeBackground() {
+    document.body.style.backgroundColor = "lightblue";
+}
+
+// Increase Font Size
+function increaseFont() {
+    fontSize += 2;
+    document.getElementById("para").style.fontSize = fontSize + "px";
+}
+
+// Show / Hide Paragraph
+function togglePara() {
+    let para = document.getElementById("para");
+
+    if (isVisible) {
+        para.style.display = "none";
+        isVisible = false;
+    } else {
+        para.style.display = "block";
+        isVisible = true;
+    }
+}
+
+// Reset
+function resetPage() {
+    document.getElementById("heading").innerHTML = "Welcome to JavaScript Lab";
+    document.body.style.backgroundColor = "#e6e6e6";
+    
+    fontSize = 16;
+    document.getElementById("para").style.fontSize = fontSize + "px";
+
+    document.getElementById("para").style.display = "block";
+    isVisible = true;
+
+    document.getElementById("newHeading").value = "";
+}
+</script>
+
+</body>
+</html>
